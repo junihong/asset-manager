@@ -2,10 +2,13 @@ package com.tamsil.assetmanager.domain.card
 
 import com.tamsil.assetmanager.domain.BaseTimeEntity
 import com.tamsil.assetmanager.domain.account.Account
+import com.tamsil.assetmanager.web.dto.CardRequestDto
 import com.tamsil.assetmanager.web.dto.CardResponseDto
 import jakarta.persistence.*
+import org.hibernate.annotations.DynamicUpdate
 
 @Entity
+@DynamicUpdate
 class Card(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,5 +42,14 @@ class Card(
                 this.checkYn,
                 null
         )
+    }
+
+    fun update(cardRequestDto: CardRequestDto) {
+        this.name = cardRequestDto.name
+        this.company = cardRequestDto.company
+        this.payDate = cardRequestDto.payDate
+        this.useYn = cardRequestDto.useYn
+        this.corporationYn = cardRequestDto.corporationYn
+        this.checkYn = cardRequestDto.checkYn
     }
 }

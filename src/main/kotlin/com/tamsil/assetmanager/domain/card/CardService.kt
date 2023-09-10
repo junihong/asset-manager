@@ -5,6 +5,7 @@ import com.tamsil.assetmanager.web.dto.CardResponseDto
 import com.tamsil.assetmanager.web.dto.toEntity
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.dao.EmptyResultDataAccessException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
@@ -23,12 +24,19 @@ class CardService(private val cardRepository: CardRepository) {
     fun update(id: Long, cardRequestDto: CardRequestDto): CardResponseDto {
         val card = cardRepository.findByIdOrNull(id)
         logger.info("card : {}", card)
-        card?.name ?: cardRequestDto.name
-        card?.company ?: cardRequestDto.company
-        card?.payDate ?: cardRequestDto.payDate
-        card?.useYn ?: cardRequestDto.useYn
-        card?.corporationYn ?: cardRequestDto.corporationYn
-        card?.checkYn ?: cardRequestDto.checkYn
+        card?.update(cardRequestDto)
         return card!!.toDto()
     }
+
+    fun delete(id: Long) {
+        cardRepository.deleteById(id)
+    }
+
+    fun findById(id: Long): CardResponseDto {
+        val card = cardRepository.findByIdOrNull(id)
+        logger.info("findById card : {}", card)
+        return card?.toDto() ?: throw EmptyResultDataAccessException(1)
+    }
+
+    fun findAll(): List<CardResponseDto> = cardRepository.findAll().map { it.toDto() }
 }

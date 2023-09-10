@@ -4,12 +4,12 @@ import com.tamsil.assetmanager.common.contraint.AccountType
 import com.tamsil.assetmanager.domain.account.Account
 
 data class AccountRequestDto(
-    val accountType: AccountType,
-    val bank: String,
-    val name: String,
-    val amount: Int,
-    val useYn: String,
-    val accountNumber: String
+    var accountType: AccountType,
+    var bank: String,
+    var name: String,
+    var amount: Int,
+    var useYn: String,
+    var accountNumber: String
 )
 
 fun AccountRequestDto.toEntity() = Account(

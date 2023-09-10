@@ -24,12 +24,12 @@ fun CardRequestDto.toEntity() = Card(
 )
 
 data class CardResponseDto(
-    val id: Long,
-    val name: String,
-    val company: String,
-    val payDate: Int,
-    val useYn: String,
-    var corporationYn: String,
-    val checkYn: String,
-    val account: AccountResponseDto?
+        val id: Long,
+        val name: String,
+        val company: String,
+        val payDate: Int,
+        val useYn: String,
+        var corporationYn: String,
+        val checkYn: String,
+        val account: AccountResponseDto?
 )

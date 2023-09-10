@@ -25,12 +25,7 @@ class AccountService(private val accountRepository: AccountRepository) {
 
     fun update(id: Long, accountRequestDto: AccountRequestDto): AccountResponseDto {
         val account = accountRepository.findByIdOrNull(id)
-        account?.accountType ?: accountRequestDto.accountType
-        account?.bank ?: accountRequestDto.bank
-        account?.name ?: accountRequestDto.name
-        account?.amount ?: accountRequestDto.amount
-        account?.useYn ?: accountRequestDto.useYn
-        account?.accountNumber ?: accountRequestDto.accountNumber
+        account?.update(accountRequestDto)
         return AccountResponseDto(
             account?.id,
             null,
@@ -61,4 +56,6 @@ class AccountService(private val accountRepository: AccountRepository) {
             account.accountNumber
         )
     }
+
+    fun findAll(): List<AccountResponseDto> = accountRepository.findAll().map { it.toDto() }
 }
