@@ -61,6 +61,4 @@ class AccountService(private val accountRepository: AccountRepository) {
             account.accountNumber
         )
     }
-
-
 }

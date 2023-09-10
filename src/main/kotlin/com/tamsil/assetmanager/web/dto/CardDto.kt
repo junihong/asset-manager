@@ -10,19 +10,18 @@ data class CardRequestDto(
     val corporationYn: String,
     val checkYn: String,
     val accountId: Long
-) {
-    fun toEntity(): Card =
-        Card(
-            null,
-            null,
-            this.name,
-            this.company,
-            this.payDate,
-            this.useYn,
-            this.corporationYn,
-            this.checkYn
-        )
-}
+)
+
+fun CardRequestDto.toEntity() = Card(
+        null,
+        null,
+        this.name,
+        this.company,
+        this.payDate,
+        this.useYn,
+        this.corporationYn,
+        this.checkYn
+)
 
 data class CardResponseDto(
     val id: Long,

@@ -6,9 +6,13 @@ import com.tamsil.assetmanager.domain.expense.ExpenseCategory
 data class ExpenseRequestDto(
     val expenseType: ExpenseType,
     val detailName: String
-) {
-    fun toEntity() = ExpenseCategory(null, this.expenseType, this.detailName)
-}
+)
+
+fun ExpenseRequestDto.toEntity() = ExpenseCategory(
+        null,
+        this.expenseType,
+        this.detailName
+)
 
 data class ExpenseResponseDto(
     val id: Long,

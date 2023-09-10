@@ -2,6 +2,7 @@ package com.tamsil.assetmanager.domain.card
 
 import com.tamsil.assetmanager.domain.BaseTimeEntity
 import com.tamsil.assetmanager.domain.account.Account
+import com.tamsil.assetmanager.web.dto.CardResponseDto
 import jakarta.persistence.*
 
 @Entity
@@ -25,5 +26,18 @@ class Card(
     fun addAccount(account: Account) {
         account.cards.add(this)
         this.account = account
+    }
+
+    fun toDto(): CardResponseDto {
+        return CardResponseDto(
+                this.id!!,
+                this.name,
+                this.company,
+                this.payDate,
+                this.useYn,
+                this.corporationYn,
+                this.checkYn,
+                null
+        )
     }
 }
