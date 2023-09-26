@@ -25,11 +25,12 @@ class AccountServiceTest @Autowired constructor(val accountService: AccountServi
                 " name: ${savedAccount.name}, amount: ${savedAccount.amount}," +
                 " accountNumber : ${savedAccount.accountNumber}")
 
-        val updateAccount = AccountRequestDto(AccountType.LIVING, "KB", "Test2 Account", 5000000, "", "")
-        val updatedAccount = accountService.update(1, updateAccount)
+        val updateAccountRequestDto = AccountRequestDto(AccountType.LIVING, "KB", "Test2 Account", 5000000, "", "")
+        val updatedAccount = accountService.update(1, updateAccountRequestDto)
+
         println("update accountId: ${updatedAccount.id}, bank: ${updatedAccount.bank}," +
                 " name: ${updatedAccount.name}, amount: ${updatedAccount.amount}," +
-                " accountNumber: ${updateAccount.accountNumber}")
+                " accountNumber: ${updateAccountRequestDto.accountNumber}")
     }
 
     private fun getAccountRequestDto(): AccountRequestDto {
