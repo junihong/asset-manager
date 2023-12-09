@@ -35,7 +35,7 @@ class CardService(private val cardRepository: CardRepository) {
     fun findById(id: Long): CardResponseDto {
         val card = cardRepository.findByIdOrNull(id)
         logger.info("findById card : {}", card)
-        return card?.toDto() ?: throw EmptyResultDataAccessException(1)
+        return card?.toDto() ?: throw Exception("Card is null")
     }
 
     fun findAll(): List<CardResponseDto> = cardRepository.findAll().map { it.toDto() }
