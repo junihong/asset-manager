@@ -1,1 +1,1 @@
-rootProject.name = "asset-manager"
+rootProject.name = "asset-manager-kotlin"
