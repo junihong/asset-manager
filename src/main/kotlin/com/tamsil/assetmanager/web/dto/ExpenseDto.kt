@@ -22,8 +22,8 @@ data class ExpenseResponseDto (
     var description: String,
     val expenseDate: LocalDate,
     var isInstallments: String,
-    var categoryId: Long,
-    var paymentId: Long
+    var category: CategoryResponseDto,
+    var payment: PaymentResponseDto
 )
 
 fun ExpenseRequestDto.toEntity() = Expense(

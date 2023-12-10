@@ -12,8 +12,8 @@ data class CategoryRequestDto (
 
 }
 
-data class CategoryResponseDto (
-    val id: Long,
+data class CategoryResponseDto(
+    val id: Long?,
     var categoryType: CategoryType,
     var categoryName: String,
     var detailName: String,

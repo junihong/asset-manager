@@ -25,4 +25,7 @@ class Expense(
     var payment: Payment?
 ): BaseTimeEntity() {
 
+    fun setPayment(payment: Payment) {
+        this.payment = payment
+    }
 }
